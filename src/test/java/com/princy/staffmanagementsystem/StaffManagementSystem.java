@@ -1,10 +1,10 @@
-package com.tekraj.schoolmanagement;
+package com.princy.staffmanagementsystem;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class SchoolManagementApplicationTests {
+class StaffManagementSystem {
 
 	@Test
 	void contextLoads() {
