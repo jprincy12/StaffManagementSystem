@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8">
+	<title>Staff Mangement System</title>
+	<link rel="stylesheet" th:href="@{/lib/bootstrap-5/css/bootstrap.min.css}" />
+</head>
+
+<body>
+	<div th:replace="fragments/header :: header"></div>
+
+
+	<div class="container my-2" align="center">
+		This is <span th:text="${title}"></span>
+		
+	</div>
+
+
+	<script th:src="@{/lib/bootstrap-5/js/bootstrap.min.js}"></script>
+</body>
+
+</html>

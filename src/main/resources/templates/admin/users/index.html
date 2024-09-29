@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>User List</title>
+    <link rel="stylesheet" th:href="@{/lib/bootstrap-5/css/bootstrap.min.css}" />
+</head>
+<body>
+	<div th:replace="fragments/header :: header"></div>
+
+    <div class="container">
+        <h2 class="mt-5">User List</h2>
+        <div class="mb-3">
+            <a th:href="@{/admin/users/add}" class="btn btn-primary">Add User</a>
+        </div>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Email</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="user : ${users}">
+                    <td th:text="${user.id}"></td>
+                    <td th:text="${user.email}"></td>
+                    <td>
+                        <a th:href="@{/admin/users/edit(id=${user.id})}" class="btn btn-warning btn-sm">Edit</a>
+						<a th:href="@{/admin/users/delete/{id}(id=${user.id})}" class="btn btn-danger btn-sm"onclick="return confirm('Are you sure?')">Delete</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

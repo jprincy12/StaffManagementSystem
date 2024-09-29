@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Responsive meta tag -->
+	<title>Login Page</title>
+	<link rel="stylesheet" th:href="@{/lib/bootstrap-5/css/bootstrap.min.css}" />
+	<style>
+		body {
+			background-color: #f8f9fa;
+			/* Light background color */
+		}
+
+		.login-container {
+			max-width: 400px;
+			/* Maximum width for the container */
+			margin: 50px auto;
+			/* Centering the container */
+			padding: 20px;
+			background-color: white;
+			border-radius: 5px;
+			box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+			/* Subtle shadow */
+		}
+	</style>
+</head>
+
+<body>
+	<div class="login-container">
+		<h2 class="text-center">Login</h2>
+		<form action="#" th:action="@{/login}" method="post" th:object="${user}">
+			<div class="mb-3">
+				<label for="email" class="form-label">Email:</label>
+				<input type="email"  class="form-control" th:field="*{username}" required
+					placeholder="Enter your email" />
+			</div>
+			<div class="mb-3">
+				<label for="password" class="form-label">Password:</label>
+				<input type="password" class="form-control" th:field="*{password}" required
+					placeholder="Enter your password" />
+			</div>
+			<div class="mb-3 ">
+				<button type="submit" class="btn btn-primary btn-block w-100">Login</button>
+			</div>
+			<div th:if="${param.error}" class="text-danger text-center">
+				Invalid Email or Password.
+			</div>
+		</form>
+		<p class="text-center">Don't have an account? <a th:href="@{/register}">Register here</a></p>
+	</div>
+
+	<script th:src="@{/lib/bootstrap-5/js/bootstrap.bundle.min.js}"></script> <!-- Bootstrap JS -->
+</body>
+
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Responsive meta tag -->
+    <title>Register Page</title>
+    <link rel="stylesheet" th:href="@{/lib/bootstrap-5/css/bootstrap.min.css}" />
+    <style>
+        body {
+            background-color: #f8f9fa; /* Light background color */
+        }
+        .register-container {
+            max-width: 400px; /* Maximum width for the container */
+            margin: 50px auto; /* Centering the container */
+            padding: 20px;
+            background-color: white;
+            border-radius: 5px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+        }
+    </style>
+</head>
+<body>
+    <div class="register-container">
+        <h2 class="text-center">Register</h2>
+        <form action="#" th:action="@{/register}" method="post" th:object="${user}">
+            <div class="mb-3">
+                <label for="name" class="form-label">Name:</label>
+                <input type="text" id="name" class="form-control" th:field="*{name}" required placeholder="Enter your name" />
+            </div>
+            <div class="mb-3">
+                <label for="email" class="form-label">Email:</label>
+                <input type="email" id="email" class="form-control" th:field="*{email}" required placeholder="Enter your email" />
+            </div>
+            <div class="mb-3">
+                <label for="password" class="form-label">Password:</label>
+                <input type="password" id="password" class="form-control" th:field="*{password}" required placeholder="Enter your password" />
+            </div>
+            <div class="mb-3">
+                <label for="confirmPassword" class="form-label">Confirm Password:</label>
+                <input type="password" id="confirmPassword" class="form-control" th:field="*{confirmPassword}" required placeholder="Confirm your password" />
+            </div>
+            <div class="mb-3">
+                <button type="submit" class="btn btn-primary w-100">Register</button> <!-- Full-width button -->
+            </div>
+            <div th:if="${param.error}" class="text-danger text-center">
+                Registration failed. Please try again.
+            </div>
+        </form>
+        <p class="text-center">Already have an account? <a th:href="@{/login}">Login here</a></p>
+    </div>
+
+    <script th:src="@{/lib/bootstrap-5/js/bootstrap.bundle.min.js}"></script> 
+</body>
+</html>

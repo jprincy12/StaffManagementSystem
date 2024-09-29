@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>User List</title>
+    <link rel="stylesheet" th:href="@{/lib/bootstrap-5/css/bootstrap.min.css}" />
+</head>
+<body>
+	<div th:replace="fragments/header :: header"></div>
+
+    <div class="container">
+        <h2 class="mt-5">Employee Details</h2>
+        <div class="mb-3">
+            <a th:href="@{/admin/employee/add}" class="btn btn-primary">Add Employee</a>
+        </div>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="employee : ${employee}">
+                    <td th:text="${employee.id}"></td>
+                    <td th:text="${employee.name}"></td>
+                    <td>
+                        <a th:href="@{/admin/employee/edit(id=${employee.id})}" class="btn btn-warning btn-sm">Edit</a>
+                        <a th:href="@{/admin/employee/delete(id=${employee.id})}" class="btn btn-danger btn-sm">Delete</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>
