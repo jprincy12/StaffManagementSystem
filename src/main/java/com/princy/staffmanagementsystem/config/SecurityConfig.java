@@ -26,22 +26,23 @@ public class SecurityConfig {
 	}
 
 	@Bean
-    AuthenticationManager authenticationManager(HttpSecurity http) throws Exception {
-        AuthenticationManagerBuilder authenticationManagerBuilder = http
-                .getSharedObject(AuthenticationManagerBuilder.class);
-        authenticationManagerBuilder.userDetailsService(customUserDetailsService).passwordEncoder(passwordEncoder());
+	AuthenticationManager authenticationManager(HttpSecurity http) throws Exception {
+		AuthenticationManagerBuilder authenticationManagerBuilder = http
+				.getSharedObject(AuthenticationManagerBuilder.class);
+		authenticationManagerBuilder.userDetailsService(customUserDetailsService).passwordEncoder(passwordEncoder());
 
-        return authenticationManagerBuilder.build();
-    }
+		return authenticationManagerBuilder.build();
+	}
 
 	@Bean
 	SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
 		http.csrf(csrf -> csrf.disable())
-				.authorizeHttpRequests(auth -> auth.requestMatchers("/admin/**").authenticated().anyRequest().permitAll())
+				.authorizeHttpRequests(
+						auth -> auth.requestMatchers("/admin/**").authenticated().anyRequest().permitAll())
 				.formLogin(formLogin -> formLogin.loginPage("/login").loginProcessingUrl("/login")
-						.defaultSuccessUrl("/admin/").failureUrl("/login?error=true").permitAll()
-				).logout(logout->logout.logoutUrl("/logout").logoutSuccessUrl("/").permitAll())
-				.sessionManagement(session->session.sessionCreationPolicy(SessionCreationPolicy.IF_REQUIRED));
+						.defaultSuccessUrl("/admin/").failureUrl("/login?error=true").permitAll())
+				.logout(logout -> logout.logoutUrl("/logout").logoutSuccessUrl("/").permitAll())
+				.sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.IF_REQUIRED));
 
 		return http.build();
 	}

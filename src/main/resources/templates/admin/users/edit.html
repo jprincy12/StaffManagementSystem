@@ -15,8 +15,7 @@
         <label for="email">Email:</label>
         <input type="email" id="email" th:field="*{email}" required>
 
-        <label for="username">Username:</label>
-        <input type="text" id="username" th:field="*{userName}" required> <!-- Ensure username field is correct -->
+        
 
         <label for="password">Password:</label>
         <input type="password" id="password" th:field="*{password}" required>
@@ -31,7 +30,7 @@
         <p style="color:red;" th:text="${error}"></p>
     </div>
 
-    <a th:href="@{/user/details}">
+    <a th:href="@{/admin/user/}">
         <button type="button">Back to List</button>
     </a>
 </body>
